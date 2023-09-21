@@ -3,14 +3,14 @@ const StockPattern = require('../models/stockPattern');
 
 const addStockPattern = async (req, res) => {
   try {
-    const { name, imageUrl, shortDescription } = req.body;
+    const { name, imageUrl, description } = req.body;
     console.log(req.body);
 
     const now = new Date();
     const newPattern = new StockPattern({
       name: name,
       imageUrl: imageUrl,
-      shortDescription: shortDescription,
+      description: description,
       createdAt: now,
       updatedAt: now,
     });
@@ -26,21 +26,21 @@ const addStockPattern = async (req, res) => {
 
     const result = await newPattern.save();
 
-    res.json({ success: true, data: result });
+    return res.json({ success: true, data: result });
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    return res.status(500).json({ success: false, message: error.message });
   }
 };
 
 const getStockPatterns = async (req, res) => {
   try {
     const result = await StockPattern.find();
-    res.json({
+    return res.json({
       success: true,
       data: result,
     });
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    return res.status(500).json({ success: false, message: error.message });
   }
 };
 
@@ -56,15 +56,15 @@ const getStockPattern = async (req, res) => {
 
     const pattern = await StockPattern.findById(id);
     if (!pattern) {
-      res.status(404).json({
+      return res.status(404).json({
         success: false,
         message: `stock pattern with id ${id} not found`,
       });
     }
 
-    res.json({ success: true, data: pattern });
+    return res.json({ success: true, data: pattern });
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    return res.status(500).json({ success: false, message: error.message });
   }
 };
 
@@ -80,7 +80,7 @@ const deleteStockPattern = async (req, res) => {
 
     const pattern = await StockPattern.findById(id);
     if (!pattern) {
-      res.status(404).json({
+      return res.status(404).json({
         success: false,
         message: `stock pattern with id ${id} not found`,
       });
@@ -88,14 +88,15 @@ const deleteStockPattern = async (req, res) => {
 
     await StockPattern.deleteOne({ _id: id });
 
-    res.json({ success: true });
+    return res.json({ success: true });
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    return res.status(500).json({ success: false, message: error.message });
   }
 };
 
 module.exports = {
   getStockPatterns,
+  getStockPattern,
   addStockPattern,
   deleteStockPattern,
 };

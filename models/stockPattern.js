@@ -39,7 +39,7 @@ const stockPatternSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    shortDescription: {
+    description: {
       type: String,
       required: true,
     },
