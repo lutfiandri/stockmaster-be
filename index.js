@@ -27,6 +27,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/private', authenticate(), (req, res) => {
+  console.log(req.auth.payload);
   res.send('private page');
 });
 
