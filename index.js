@@ -1,11 +1,12 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const mongoose = require('mongoose');
 
 const { authenticate } = require('./middlewares/authMiddleware');
 const getenv = require('./utils/helpers/getenv');
 const stockPatternRoute = require('./routes/stockPatternRoute');
-const mongoose = require('mongoose');
+const auth0Route = require('./routes/auth0Route');
 
 app.use(cors());
 app.use(express.json());
@@ -31,11 +32,7 @@ app.get('/private', authenticate(), (req, res) => {
   res.send('private page');
 });
 
-app.post('/auth0/post-user-registration', (req, res) => {
-  console.log(req.body);
-  res.sendStatus(200);
-});
-
 app.use('/stock-patterns', stockPatternRoute);
+app.use('/auth0', auth0Route);
 
-app.listen(5000, () => console.log('stock-master-be started...'));
+app.listen(5000, () => console.log('stockmaster-be started...'));
