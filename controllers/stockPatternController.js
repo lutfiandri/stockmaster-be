@@ -3,7 +3,7 @@ const StockPattern = require('../models/stockPattern');
 
 const addStockPattern = async (req, res) => {
   try {
-    const { name, imageUrl, description } = req.body;
+    const { name, imageUrl, description, learnPages } = req.body;
     console.log(req.body);
 
     const now = new Date();
@@ -11,6 +11,7 @@ const addStockPattern = async (req, res) => {
       name: name,
       imageUrl: imageUrl,
       description: description,
+      learnPages: learnPages,
       createdAt: now,
       updatedAt: now,
     });

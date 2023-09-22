@@ -7,10 +7,10 @@ const questionHandwriteSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  subtitle: {
-    type: String,
-    required: true,
-  },
+  trueClassIndex: {
+    type: Number,
+    required: true
+  }
 });
 
 // pilihan ganda
