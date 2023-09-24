@@ -47,12 +47,12 @@ const addManyQuestions = async (req, res) => {
         createdAt: now,
         updatedAt: now,
       });
-      questions.append(question);
+      questions.push(question);
 
       const err = question.validateSync();
       if (err) {
         err.id = question.id;
-        errs.append(err);
+        errs.push(err);
       }
     });
 
@@ -74,7 +74,17 @@ const addManyQuestions = async (req, res) => {
 
 const getQuestions = async (req, res) => {
   try {
-    const result = await Question.find();
+    const filter = {};
+
+    if (req.query.pattern) {
+      filter.pattern = req.query.pattern;
+    }
+
+    if (req.query.type) {
+      filter.type = req.query.type;
+    }
+
+    const result = await Question.find(filter);
     return res.json({
       success: true,
       data: result,
@@ -138,5 +148,6 @@ module.exports = {
   getQuestions,
   getQuestion,
   addQuestion,
+  addManyQuestions,
   deleteQuestion,
 };
