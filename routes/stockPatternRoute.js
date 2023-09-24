@@ -3,6 +3,7 @@ const router = express.Router();
 const controller = require('../controllers/stockPatternController');
 
 router.post('/', controller.addStockPattern);
+router.post('/many', controller.addManyStockPatterns);
 router.get('/', controller.getStockPatterns);
 router.get('/:id', controller.getStockPattern);
 router.delete('/:id', controller.deleteStockPattern);
