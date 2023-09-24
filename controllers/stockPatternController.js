@@ -20,7 +20,7 @@ const addStockPattern = async (req, res) => {
     if (err) {
       return res.status(400).json({
         success: false,
-        validationErrors: err.errors,
+        validationError: err.errors,
         message: err.message,
       });
     }

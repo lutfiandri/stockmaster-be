@@ -24,9 +24,9 @@ const learnPageComposeSchema = new mongoose.Schema({
     required: true,
     enum: ['learn', 'handwrite', 'multiple-choice'],
   },
-  learnPage: learnPageSchema,
-  handwritePage: questionHandwriteSchema,
-  multipleChoicePage: questionMultipleChoiceSchema,
+  learn: learnPageSchema,
+  handwrite: questionHandwriteSchema,
+  multipleChoice: questionMultipleChoiceSchema,
 });
 
 const stockPatternSchema = new mongoose.Schema(
