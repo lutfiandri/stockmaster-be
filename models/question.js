@@ -7,19 +7,26 @@ const questionHandwriteSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  trueClassIndex: {
-    type: Number,
-    required: true,
-  },
 });
 
 // pilihan ganda
 const questionMultipleChoiceSchema = new mongoose.Schema({
   question: String,
   imageUrl: String,
-  options: [String],
-  trueOptionIndex: {
-    type: Number,
+  options: [
+    {
+      id: {
+        type: String,
+        required: true,
+      },
+      value: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
+  trueOptionId: {
+    type: String,
     required: true,
   },
   optionType: {
