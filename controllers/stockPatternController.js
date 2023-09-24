@@ -3,11 +3,8 @@ const StockPattern = require('../models/stockPattern');
 
 const addStockPattern = async (req, res) => {
   try {
-    const now = new Date();
     const newPattern = new StockPattern({
       ...req.body,
-      createdAt: now,
-      updatedAt: now,
     });
 
     const err = newPattern.validateSync();
@@ -29,8 +26,6 @@ const addStockPattern = async (req, res) => {
 
 const addManyStockPatterns = async (req, res) => {
   try {
-    const now = new Date();
-
     if (!req.body.patterns) {
       return res.status(400).json({
         success: false,
@@ -44,8 +39,6 @@ const addManyStockPatterns = async (req, res) => {
     req.body.patterns.forEach((p) => {
       const pattern = new StockPattern({
         ...p,
-        createdAt: now,
-        updatedAt: now,
       });
       patterns.push(pattern);
 
@@ -74,7 +67,49 @@ const addManyStockPatterns = async (req, res) => {
 
 const getStockPatterns = async (req, res) => {
   try {
-    const result = await StockPattern.find();
+    const pipeline = [{ $match: {} }];
+
+    if (req.query.questions == 1) {
+      pipeline.push({
+        $lookup: {
+          from: 'questions',
+          localField: 'questionIds',
+          foreignField: '_id',
+          as: 'questions',
+        },
+      });
+
+      pipeline.push({
+        $project: {
+          questions: {
+            multipleChoice: {
+              trueOptionId: 0,
+            },
+          },
+        },
+      });
+
+      // sort questions based on questionIds
+      pipeline.push({
+        $addFields: {
+          questions: {
+            $arrayToObject: {
+              $map: {
+                input: '$questions',
+                as: 'question',
+                in: {
+                  k: { $toString: '$$question._id' },
+                  v: '$$question',
+                },
+              },
+            },
+          },
+        },
+      });
+    }
+
+    const result = await StockPattern.aggregate(pipeline).exec();
+
     return res.json({
       success: true,
       data: result,
@@ -94,15 +129,57 @@ const getStockPattern = async (req, res) => {
       });
     }
 
-    const pattern = await StockPattern.findById(id);
-    if (!pattern) {
+    const pipeline = [{ $match: { _id: new mongoose.Types.ObjectId(id) } }];
+
+    if (req.query.questions == 1) {
+      pipeline.push({
+        $lookup: {
+          from: 'questions',
+          localField: 'questionIds',
+          foreignField: '_id',
+          as: 'questions',
+        },
+      });
+
+      pipeline.push({
+        $project: {
+          questions: {
+            multipleChoice: {
+              trueOptionId: 0,
+            },
+          },
+        },
+      });
+
+      // sort questions based on questionIds
+      pipeline.push({
+        $addFields: {
+          questions: {
+            $arrayToObject: {
+              $map: {
+                input: '$questions',
+                as: 'question',
+                in: {
+                  k: { $toString: '$$question._id' },
+                  v: '$$question',
+                },
+              },
+            },
+          },
+        },
+      });
+    }
+
+    const result = await StockPattern.aggregate(pipeline).exec();
+
+    if (!result?.length) {
       return res.status(404).json({
         success: false,
         message: `stock pattern with id ${id} not found`,
       });
     }
 
-    return res.json({ success: true, data: pattern });
+    return res.json({ success: true, data: result[0] });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
