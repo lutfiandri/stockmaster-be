@@ -1,0 +1,14 @@
+https://ik.imagekit.io/lutfiandri/stockmaster/patterns/rising-wedge.svg
+https://ik.imagekit.io/lutfiandri/stockmaster/patterns/head-and-shoulders.svg
+https://ik.imagekit.io/lutfiandri/stockmaster/patterns/inverse-head-and-shoulders.svg
+https://ik.imagekit.io/lutfiandri/stockmaster/patterns/inverse-cup-and-handle.svg
+https://ik.imagekit.io/lutfiandri/stockmaster/patterns/falling-wedge.svg
+https://ik.imagekit.io/lutfiandri/stockmaster/patterns/double-bottom.svg
+https://ik.imagekit.io/lutfiandri/stockmaster/patterns/double-top.svg
+https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bearish-pennant.svg
+https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bullish-rectangle.svg
+https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bearish-flag.svg
+https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bullish-flag.svg
+https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bullish-pennant.svg
+https://ik.imagekit.io/lutfiandri/stockmaster/patterns/cup-and-handle.svg
+https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bearish-rectangle.svg

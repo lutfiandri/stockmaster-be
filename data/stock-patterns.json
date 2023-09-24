@@ -1,0 +1,88 @@
+{
+  "patterns": [
+    {
+      "title": "Head and Shoulders",
+      "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/head-and-shoulders.svg",
+      "desctiptions": [
+        "Pola Head and Shoulders adalah pola yang terdiri dari tiga puncak, dengan puncak tengah (kepala) lebih tinggi dari dua puncak samping (bahu). Pola ini mengindikasikan potensi pembalikan tren dari tren naik ke tren turun. Puncak bahu kiri dan bahu kanan biasanya memiliki tinggi yang sekitar sama. Pola ini bisa menjadi sinyal bahwa pembeli mulai kehilangan kendali, dan penjual mungkin akan mengambil alih."
+      ],
+      "questionsIds": [
+        "651013ae4aa970361cbc6d41",
+        "651013ae4aa970361cbc6d42",
+        "651013ae4aa970361cbc6d43",
+        "651013ae4aa970361cbc6d44",
+        "651013ae4aa970361cbc6d45"
+      ]
+    },
+    {
+      "title": "Inverse Head and Shoulders",
+      "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/inverse-head-and-shoulders.svg",
+      "desctiptions": [
+        "Pola Inverted Head and Shoulders adalah kebalikan dari pola Head and Shoulders. Ini terdiri dari tiga puncak, dengan puncak tengah (kepala) lebih rendah dari dua puncak samping (bahu). Pola ini dapat diartikan sebagai sinyal potensial pembalikan tren dari tren turun ke tren naik, dan sering dianggap sebagai indikator bullish. Ini bisa menjadi tanda bahwa penjual kehilangan kendali, dan pembeli mungkin akan mengambil alih."
+      ],
+      "questionsIds": [
+        "651013ae4aa970361cbc6d46",
+        "651013ae4aa970361cbc6d47",
+        "651013ae4aa970361cbc6d48",
+        "651013ae4aa970361cbc6d49",
+        "651013ae4aa970361cbc6d4a"
+      ]
+    },
+    {
+      "title": "Double Top",
+      "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/double-top.svg",
+      "desctiptions": [
+        "Pola Double Top terbentuk ketika harga mencapai dua puncak yang hampir sejajar dalam pergerakan harga, dengan puncak kedua sedikit lebih rendah dari puncak pertama. Pola ini mencerminkan tekanan jual yang kuat dan merupakan indikasi potensi pembalikan tren turun. Dengan kata lain, pola ini mengisyaratkan bahwa tren naik yang kuat mungkin telah mencapai puncaknya dan harga saham kemungkinan akan mengalami penurunan. Trader sering melihat pola Double Top sebagai sinyal untuk menjual saham atau mengambil posisi short."
+      ],
+      "questionsIds": [
+        "651013ae4aa970361cbc6d4b",
+        "651013ae4aa970361cbc6d4c",
+        "651013ae4aa970361cbc6d4d",
+        "651013ae4aa970361cbc6d4e",
+        "651013ae4aa970361cbc6d4f"
+      ]
+    },
+    {
+      "title": "Double Bottom",
+      "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/double-bottom.svg",
+      "desctiptions": [
+        "Pola Double Bottom terjadi ketika harga mencapai dua dasar yang hampir sejajar dalam pergerakan harga, dengan dasar kedua sedikit lebih tinggi dari dasar pertama. Pola ini mencerminkan tekanan beli yang kuat dan merupakan indikasi potensi pembalikan tren naik. Artinya, pola ini mengisyaratkan bahwa tren turun yang kuat mungkin telah mencapai dasarnya dan harga saham kemungkinan akan mengalami kenaikan. Oleh karena itu, trader sering melihat pola Double Bottom sebagai sinyal untuk membeli saham atau mengambil posisi long."
+      ],
+      "questionsIds": [
+        "651013ae4aa970361cbc6d50",
+        "651013ae4aa970361cbc6d51",
+        "651013ae4aa970361cbc6d52",
+        "651013ae4aa970361cbc6d53",
+        "651013ae4aa970361cbc6d54"
+      ]
+    },
+    {
+      "title": "Bearish Flag",
+      "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bearish-flag.svg",
+      "desctiptions": [
+        "Pola Bearish Flag terjadi setelah tren naik yang kuat. Pola ini terlihat seperti bendera dengan tiang yang menunjukkan tren naik sebelumnya dan koreksi harga yang relatif pendek yang bergerak secara horizontal atau sedikit turun. Bentuknya seperti segitiga yang menurun atau lurus dengan garis miring ke bawah. Pola Bearish Flag adalah sinyal bahwa tren naik mungkin akan melanjutkan pergerakannya setelah koreksi harga singkat. Ini mengindikasikan bahwa penjual masih dominan meskipun terjadi koreksi harga. Trader sering mencari peluang sell saat harga keluar dari pola ini ke bawah."
+      ],
+      "questionsIds": [
+        "651013ae4aa970361cbc6d55",
+        "651013ae4aa970361cbc6d56",
+        "651013ae4aa970361cbc6d57",
+        "651013ae4aa970361cbc6d58",
+        "651013ae4aa970361cbc6d59"
+      ]
+    },
+    {
+      "title": "Bullish Flag",
+      "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bullish-flag.svg",
+      "desctiptions": [
+        "Pola Bullish Flag juga terjadi setelah tren naik yang kuat. Pola ini terlihat seperti bendera dengan tiang yang menunjukkan tren naik sebelumnya dan koreksi harga yang relatif pendek yang bergerak secara horizontal atau sedikit naik. Bentuknya mirip dengan segitiga naik atau lurus dengan garis miring ke atas. Pola Bullish Flag adalah sinyal bahwa tren naik mungkin akan melanjutkan pergerakannya setelah koreksi harga singkat. Ini mengindikasikan bahwa pembeli masih dominan meskipun terjadi koreksi harga. Trader sering mencari peluang buy saat harga keluar dari pola ini ke atas."
+      ],
+      "questionsIds": [
+        "651013ae4aa970361cbc6d5a",
+        "651013ae4aa970361cbc6d5b",
+        "651013ae4aa970361cbc6d5c",
+        "651013ae4aa970361cbc6d5d",
+        "651013ae4aa970361cbc6d5e"
+      ]
+    }
+  ]
+}
