@@ -10,7 +10,7 @@ const answerSchema = new mongoose.Schema(
     timeSeconds: Number,
     points: Number,
   },
-  { _id: false, timestamps: true }
+  { timestamps: true }
 );
 
 const Answer = mongoose.model('Answer', answerSchema);

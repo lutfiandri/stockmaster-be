@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const LearnQuiz = require('../models/learnQuiz');
 const { Answer } = require('../models/answer');
 const StockPattern = require('../models/stockPattern');
 const { Question } = require('../models/question');
@@ -47,6 +46,63 @@ const createAttempt = async (req, res) => {
   }
 };
 
+const endAttempt = async (req, res) => {
+  try {
+    const user = req.auth.payload.user;
+    if (!mongoose.Types.ObjectId.isValid(req.params.attemptId)) {
+      return res.status(400).json({
+        success: false,
+        message: 'invalid objectId in for attemptId',
+      });
+    }
+
+    const attemptId = new mongoose.Types.ObjectId(req.params.attemptId);
+    const attempt = await AnswerAttempt.findById(attemptId);
+
+    if (!attempt) {
+      return res.status(404).json({
+        success: false,
+        message: `attempt ${attemptId} not found`,
+      });
+    }
+
+    // get all answers
+    const answers = await Answer.find({
+      userEmail: user.email,
+      attemptId: attemptId,
+    });
+
+    let totalTrue = 0;
+    let totalFalse = 0;
+    let totalPoints = 0;
+    let totalTimeSeconds = 0;
+
+    console.log(answers);
+
+    answers.forEach((a) => {
+      if (a.isTrue) {
+        totalTrue += 1;
+      } else {
+        totalFalse += 1;
+      }
+
+      totalPoints += a.points;
+      totalTimeSeconds += a.timeSeconds;
+    });
+
+    attempt.isFinished = true;
+    attempt.totalTrue = totalTrue;
+    attempt.totalFalse = totalFalse;
+    attempt.totalPoints = totalPoints;
+    attempt.totalTimeSeconds = totalTimeSeconds;
+
+    const result = await attempt.save();
+    return res.status(201).json({ success: true, data: result });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
+  }
+};
+
 const getLastAttempt = async (req, res) => {
   try {
     if (!mongoose.Types.ObjectId.isValid(req.params.patternId)) {
@@ -75,26 +131,46 @@ const getLastAttempt = async (req, res) => {
 
 const answerQuestion = async (req, res) => {
   try {
+    const user = req.auth.payload.user;
+
     if (
       !mongoose.Types.ObjectId.isValid(req.params.patternId) ||
-      !mongoose.Types.ObjectId.isValid(req.params.questionId)
+      !mongoose.Types.ObjectId.isValid(req.params.questionId) ||
+      !mongoose.Types.ObjectId.isValid(req.params.patternId)
     ) {
       return res.status(400).json({
         success: false,
-        message: 'invalid objectId in for patternId and/or questionId',
+        message:
+          'invalid objectId in for patternId, patternId, and/or questionId',
       });
     }
 
     const patternId = new mongoose.Types.ObjectId(req.params.patternId);
+    const attemptId = new mongoose.Types.ObjectId(req.params.attemptId);
     const questionId = new mongoose.Types.ObjectId(req.params.questionId);
     const { timeSeconds, answer: ans } = req.body;
 
-    const user = req.auth.payload.user;
-    console.log(user);
+    // check if this is first answer
+    const lastAnswers = await Answer.find({
+      userEmail: user.email,
+      attemptId: attemptId,
+      questionId: questionId,
+    });
+
+    if (lastAnswers.length > 0) {
+      return res.status(409).json({
+        success: false,
+        message: `${user.email} has answered question ${questionId} on attempt ${attemptId}`,
+      });
+    }
+
+    // answering process
     const answer = new Answer({
       userEmail: user.email,
+      attemptId: attemptId,
       questionId: questionId,
       answer: ans,
+      points: 0,
       timeSeconds: timeSeconds,
       isTrue: false,
     });
@@ -124,20 +200,14 @@ const answerQuestion = async (req, res) => {
     } else {
       if (answer.answer === question.multipleChoice.trueOptionId) {
         answer.isTrue = true;
+        answer.points = 100;
       }
     }
 
-    // const err = question.validateSync();
-    // if (err) {
-    //   return res.status(400).json({
-    //     success: false,
-    //     validationError: err.errors,
-    //     message: err.message,
-    //   });
-    // }
+    const result = await answer.save();
 
     // const result = await question.save();
-    const result = { message: 'ok' };
+    // const result = { message: 'ok' };
 
     return res.json({ success: true, data: result });
   } catch (error) {
@@ -147,6 +217,7 @@ const answerQuestion = async (req, res) => {
 
 module.exports = {
   createAttempt,
+  endAttempt,
   getLastAttempt,
   answerQuestion,
 };

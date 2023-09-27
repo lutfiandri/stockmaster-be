@@ -12,7 +12,7 @@ router.delete('/:id', controller.deleteStockPattern);
 
 // answering questions
 router.post(
-  '/:patternId/attempts/start',
+  '/:patternId/attempts',
   authenticate(),
   learnQuizController.createAttempt
 );
@@ -24,9 +24,15 @@ router.get(
 );
 
 router.post(
-  '/:patternId/attempts/:questionId',
+  '/:patternId/attempts/:attemptId/questions/:questionId',
   authenticate(),
   learnQuizController.answerQuestion
+);
+
+router.post(
+  '/:patternId/attempts/:attemptId/end',
+  authenticate(),
+  learnQuizController.endAttempt
 );
 
 module.exports = router;
