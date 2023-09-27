@@ -111,8 +111,6 @@ const getStockPatterns = async (req, res) => {
 
     const result = await StockPattern.aggregate(pipeline).exec();
 
-    console.log(result);
-
     const user = req.auth.payload.user;
 
     const attemptPromises = result.map(async (r) => {
