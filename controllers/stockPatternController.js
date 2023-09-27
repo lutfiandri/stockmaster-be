@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const StockPattern = require('../models/stockPattern');
+const { AnswerAttempt } = require('../models/answerAttempt');
 
 const addStockPattern = async (req, res) => {
   try {
@@ -110,9 +111,27 @@ const getStockPatterns = async (req, res) => {
 
     const result = await StockPattern.aggregate(pipeline).exec();
 
+    console.log(result);
+
+    const user = req.auth.payload.user;
+
+    const attemptPromises = result.map(async (r) => {
+      const attempt = await AnswerAttempt.findOne({
+        type: 'learn',
+        userEmail: user.email,
+        gameId: r._id,
+      })
+        .sort({ _id: -1 })
+        .exec();
+      r.lastAttempt = attempt;
+      return r;
+    });
+
+    const result2 = await Promise.all(attemptPromises);
+
     return res.json({
       success: true,
-      data: result,
+      data: result2,
     });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
@@ -129,7 +148,9 @@ const getStockPattern = async (req, res) => {
       });
     }
 
-    const pipeline = [{ $match: { _id: new mongoose.Types.ObjectId(id) } }];
+    const patternId = new mongoose.Types.ObjectId(id);
+
+    const pipeline = [{ $match: { _id: patternId } }];
 
     if (req.query.questions == 1) {
       pipeline.push({
@@ -178,6 +199,16 @@ const getStockPattern = async (req, res) => {
         message: `stock pattern with id ${id} not found`,
       });
     }
+
+    const user = req.auth.payload.user;
+    const attempt = await AnswerAttempt.findOne({
+      type: 'learn',
+      userEmail: user.email,
+      gameId: patternId,
+    })
+      .sort({ _id: -1 })
+      .exec();
+    result[0].lastAttempt = attempt;
 
     return res.json({ success: true, data: result[0] });
   } catch (error) {

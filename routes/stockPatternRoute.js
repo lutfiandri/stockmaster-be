@@ -6,8 +6,8 @@ const learnQuizController = require('../controllers/learnQuizController');
 
 router.post('/', controller.addStockPattern);
 router.post('/many', controller.addManyStockPatterns);
-router.get('/', controller.getStockPatterns);
-router.get('/:id', controller.getStockPattern);
+router.get('/', authenticate(), controller.getStockPatterns);
+router.get('/:id', authenticate(), controller.getStockPattern);
 router.delete('/:id', controller.deleteStockPattern);
 
 // answering questions
