@@ -3,6 +3,9 @@ const { Answer } = require('../models/answer');
 const StockPattern = require('../models/stockPattern');
 const { Question } = require('../models/question');
 const { AnswerAttempt } = require('../models/answerAttempt');
+const {
+  predictStockPattern,
+} = require('../utils/services/predictStockPattern');
 
 const createAttempt = async (req, res) => {
   try {
@@ -76,8 +79,6 @@ const endAttempt = async (req, res) => {
     let totalFalse = 0;
     let totalPoints = 0;
     let totalTimeSeconds = 0;
-
-    console.log(answers);
 
     answers.forEach((a) => {
       if (a.isTrue) {
@@ -157,12 +158,13 @@ const answerQuestion = async (req, res) => {
       questionId: questionId,
     });
 
-    if (lastAnswers.length > 0) {
-      return res.status(409).json({
-        success: false,
-        message: `${user.email} has answered question ${questionId} on attempt ${attemptId}`,
-      });
-    }
+    // TODO: uncomment when the frontend development is done
+    // if (lastAnswers.length > 0) {
+    //   return res.status(409).json({
+    //     success: false,
+    //     message: `${user.email} has answered question ${questionId} on attempt ${attemptId}`,
+    //   });
+    // }
 
     // answering process
     const answer = new Answer({
@@ -195,8 +197,15 @@ const answerQuestion = async (req, res) => {
 
     const question = await Question.findById(questionId);
 
+    let handwriteResult = null;
+
     if (question.type === 'handwrite') {
-      // ...
+      handwriteResult = await predictStockPattern(answer.answer);
+      answer.answer = handwriteResult.data.className;
+      if (handwriteResult.data.className === question.pattern) {
+        answer.isTrue = true;
+        answer.points = 100;
+      }
     } else {
       if (answer.answer === question.multipleChoice.trueOptionId) {
         answer.isTrue = true;
@@ -204,10 +213,14 @@ const answerQuestion = async (req, res) => {
       }
     }
 
-    const result = await answer.save();
+    const saveResult = await answer.save();
+    const result = saveResult.toObject();
 
-    // const result = await question.save();
-    // const result = { message: 'ok' };
+    if (question.type === 'handwrite') {
+      result.truePattern = question.pattern;
+    } else {
+      result.trueOptionId = question.multipleChoice.trueOptionId;
+    }
 
     return res.json({ success: true, data: result });
   } catch (error) {
