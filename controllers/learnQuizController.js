@@ -151,6 +151,15 @@ const answerQuestion = async (req, res) => {
     const questionId = new mongoose.Types.ObjectId(req.params.questionId);
     const { timeSeconds, answer: ans } = req.body;
 
+    // check if attempt is not finished yet
+    const attempt = await AnswerAttempt.findById(attemptId);
+    if (attempt.isFinished) {
+      return res.status(409).json({
+        success: false,
+        message: `${user.email} has finished attempt ${attemptId}`,
+      });
+    }
+
     // check if this is first answer
     const lastAnswers = await Answer.find({
       userEmail: user.email,
@@ -223,7 +232,6 @@ const answerQuestion = async (req, res) => {
     }
 
     // update attempt
-    const attempt = await AnswerAttempt.findById(attemptId);
     attempt.lastAnsweredQuestionId = question;
     if (answer.isTrue) {
       attempt.totalTrue += 1;
