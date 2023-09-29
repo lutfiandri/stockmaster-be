@@ -6,6 +6,7 @@ const { AnswerAttempt } = require('../models/answerAttempt');
 const {
   predictStockPattern,
 } = require('../utils/services/predictStockPattern');
+const { calculatePoints } = require('../utils/helpers/calculatePoints');
 
 const createAttempt = async (req, res) => {
   try {
@@ -70,10 +71,10 @@ const endAttempt = async (req, res) => {
     }
 
     // get all answers
-    const answers = await Answer.find({
-      userEmail: user.email,
-      attemptId: attemptId,
-    });
+    // const answers = await Answer.find({
+    //   userEmail: user.email,
+    //   attemptId: attemptId,
+    // });
 
     // let totalTrue = 0;
     // let totalFalse = 0;
@@ -153,7 +154,13 @@ const answerQuestion = async (req, res) => {
 
     // check if attempt is not finished yet
     const attempt = await AnswerAttempt.findById(attemptId);
-    if (attempt.isFinished) {
+    if (!attempt) {
+      return res.status(404).json({
+        success: false,
+        message: `${user.email} has no attempt ${attemptId}`,
+      });
+    }
+    if (!!attempt.isFinished) {
       return res.status(409).json({
         success: false,
         message: `${user.email} has finished attempt ${attemptId}`,
@@ -213,12 +220,12 @@ const answerQuestion = async (req, res) => {
       answer.answer = handwriteResult.data.className;
       if (handwriteResult.data.className === question.pattern) {
         answer.isTrue = true;
-        answer.points = 100;
+        answer.points = calculatePoints(timeSeconds);
       }
     } else {
       if (answer.answer === question.multipleChoice.trueOptionId) {
         answer.isTrue = true;
-        answer.points = 100;
+        answer.points = calculatePoints(timeSeconds);
       }
     }
 
