@@ -1,4 +1,5 @@
 const { AnswerAttempt } = require('../models/answerAttempt');
+const User = require('../models/user');
 
 const getLeaderBoard = async (req, res) => {
   try {
@@ -67,9 +68,24 @@ const getLeaderBoard = async (req, res) => {
         };
       });
 
+    const userEmails = result.map((r) => r.userEmail);
+
+    const users = await User.find({ email: { $in: userEmails } });
+    const usersMap = users.reduce((map, user) => {
+      map[user.email] = user;
+      return map;
+    }, {});
+
+    result.users = usersMap;
+
+    const result2 = {
+      leaderBoards: result,
+      users: usersMap,
+    };
+
     return res.json({
       success: true,
-      data: result,
+      data: result2,
     });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
