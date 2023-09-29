@@ -20,6 +20,10 @@ const answerAttemptSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
+    lastAnsweredQuestionId: {
+      type: mongoose.Types.ObjectId,
+      required: false,
+    },
     totalTrue: {
       type: Number,
       required: true,

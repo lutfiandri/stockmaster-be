@@ -75,27 +75,27 @@ const endAttempt = async (req, res) => {
       attemptId: attemptId,
     });
 
-    let totalTrue = 0;
-    let totalFalse = 0;
-    let totalPoints = 0;
-    let totalTimeSeconds = 0;
+    // let totalTrue = 0;
+    // let totalFalse = 0;
+    // let totalPoints = 0;
+    // let totalTimeSeconds = 0;
 
-    answers.forEach((a) => {
-      if (a.isTrue) {
-        totalTrue += 1;
-      } else {
-        totalFalse += 1;
-      }
+    // answers.forEach((a) => {
+    //   if (a.isTrue) {
+    //     totalTrue += 1;
+    //   } else {
+    //     totalFalse += 1;
+    //   }
 
-      totalPoints += a.points;
-      totalTimeSeconds += a.timeSeconds;
-    });
+    //   totalPoints += a.points;
+    //   totalTimeSeconds += a.timeSeconds;
+    // });
 
     attempt.isFinished = true;
-    attempt.totalTrue = totalTrue;
-    attempt.totalFalse = totalFalse;
-    attempt.totalPoints = totalPoints;
-    attempt.totalTimeSeconds = totalTimeSeconds;
+    // attempt.totalTrue = totalTrue;
+    // attempt.totalFalse = totalFalse;
+    // attempt.totalPoints = totalPoints;
+    // attempt.totalTimeSeconds = totalTimeSeconds;
 
     const result = await attempt.save();
     return res.status(201).json({ success: true, data: result });
@@ -159,12 +159,12 @@ const answerQuestion = async (req, res) => {
     });
 
     // TODO: uncomment when the frontend development is done
-    // if (lastAnswers.length > 0) {
-    //   return res.status(409).json({
-    //     success: false,
-    //     message: `${user.email} has answered question ${questionId} on attempt ${attemptId}`,
-    //   });
-    // }
+    if (lastAnswers.length > 0) {
+      return res.status(409).json({
+        success: false,
+        message: `${user.email} has answered question ${questionId} on attempt ${attemptId}`,
+      });
+    }
 
     // answering process
     const answer = new Answer({
@@ -221,6 +221,19 @@ const answerQuestion = async (req, res) => {
     } else {
       result.trueOptionId = question.multipleChoice.trueOptionId;
     }
+
+    // update attempt
+    const attempt = await AnswerAttempt.findById(attemptId);
+    attempt.lastAnsweredQuestionId = question;
+    if (answer.isTrue) {
+      attempt.totalTrue += 1;
+    } else {
+      attempt.totalFalse += 1;
+    }
+    attempt.totalPoints += answer.points;
+    attempt.totalTimeSeconds += timeSeconds;
+    attempt.lastAnsweredQuestionId = questionId;
+    await attempt.save();
 
     return res.json({ success: true, data: result });
   } catch (error) {
