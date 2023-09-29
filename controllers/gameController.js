@@ -26,13 +26,16 @@ const addGame = async (req, res) => {
 const getLastGame = async (req, res) => {
   try {
     const user = req.auth.payload.user;
-    const gameResult = await Game.findOne({
-      // gameId: gameId,
-    })
-      .sort({ _id: -1 })
-      .exec();
+    const gameResult = await Game.find().sort({ _id: -1 }).exec();
 
-    const result = gameResult.toObject();
+    if (gameResult.length == 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'there is no game in the system',
+      });
+    }
+
+    const result = gameResult[0].toObject();
 
     // get if user has attempted
     const attempt = await AnswerAttempt.findOne({
@@ -135,9 +138,9 @@ const getGame = async (req, res) => {
       });
     }
 
-    const patternId = new mongoose.Types.ObjectId(id);
+    const gameId = new mongoose.Types.ObjectId(id);
 
-    const pipeline = [{ $match: { _id: patternId } }];
+    const pipeline = [{ $match: { _id: gameId } }];
 
     if (req.query.questions == 1) {
       pipeline.push({
@@ -183,15 +186,15 @@ const getGame = async (req, res) => {
     if (!result?.length) {
       return res.status(404).json({
         success: false,
-        message: `stock pattern with id ${id} not found`,
+        message: `game with id ${id} not found`,
       });
     }
 
     const user = req.auth.payload.user;
     const attempt = await AnswerAttempt.findOne({
-      type: 'learn',
+      type: 'game',
       userEmail: user.email,
-      gameId: patternId,
+      gameId: gameId,
     })
       .sort({ _id: -1 })
       .exec();
