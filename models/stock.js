@@ -34,6 +34,9 @@ const stockSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    imageUrl: {
+      type: String,
+    },
     prices: [priceSchema],
     forecasts: [forecastSchema],
   },
