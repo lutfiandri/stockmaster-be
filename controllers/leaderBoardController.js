@@ -76,12 +76,12 @@ const getLeaderBoard = async (req, res) => {
       return map;
     }, {});
 
-    result.users = usersMap;
+    const result2 = result.map((r) => ({
+      ...r,
+      user: usersMap[r.userEmail],
+    }));
 
-    const result2 = {
-      leaderBoards: result,
-      users: usersMap,
-    };
+    result.users = usersMap;
 
     return res.json({
       success: true,
