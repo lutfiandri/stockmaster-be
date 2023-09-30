@@ -898,31 +898,115 @@
       }
     },
     {
-      "pattern": "inverse-cup-and-handle",
+      "pattern": "bullish-pennant",
       "type": "multiple-choice",
       "multipleChoice": {
-        "question": "",
-        "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/inverse-cup-and-handle.svg",
+        "question": "Pola ini mirip dengan bendera, dengan tiang menunjukkan tren naik sebelumnya dan koreksi harga yang pendek yang bergerak secara horizontal.",
         "options": [
           {
             "id": "a",
-            "value": ""
+            "value": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bullish-pennant.svg"
           },
           {
             "id": "b",
-            "value": ""
+            "value": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bearish-flag.svg"
           },
           {
             "id": "c",
-            "value": ""
+            "value": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bullish-flag.svg"
           },
           {
             "id": "d",
-            "value": ""
+            "value": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bullish-rectangle.svg"
           }
         ],
-        "trueOptionId": "",
-        "optionType": ""
+        "trueOptionId": "a",
+        "optionType": "image"
+      }
+    },
+    {
+      "pattern": "bullish-pennant",
+      "type": "multiple-choice",
+      "multipleChoice": {
+        "question": "Secara visual, pola ini terlihat seperti segitiga yang menurun atau lurus dengan garis miring ke bawah. Pola ini adalah sinyal bahwa tren naik mungkin akan berlanjut setelah koreksi harga singkat.",
+        "options": [
+          {
+            "id": "a",
+            "value": "Rising Wedge"
+          },
+          {
+            "id": "b",
+            "value": "Bullish Pennant"
+          },
+          {
+            "id": "c",
+            "value": "Falling Wedge"
+          },
+          {
+            "id": "d",
+            "value": "Bullish Pennant"
+          }
+        ],
+        "trueOptionId": "b",
+        "optionType": "short-text"
+      }
+    },
+    {
+      "pattern": "bullish-pennant",
+      "type": "handwrite",
+      "handwrite": {
+        "title": "Bullish Pennant",
+        "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bullish-pennant.svg"
+      }
+    },
+    {
+      "pattern": "bullish-pennant",
+      "type": "multiple-choice",
+      "multipleChoice": {
+        "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bullish-pennant.svg",
+        "options": [
+          {
+            "id": "a",
+            "value": "Falling Wedge"
+          },
+          {
+            "id": "b",
+            "value": "Bearish Flag"
+          },
+          {
+            "id": "c",
+            "value": "Bullish Pennant"
+          },
+          {
+            "id": "d",
+            "value": "Head and Shoulders"
+          }
+        ],
+        "trueOptionId": "c",
+        "optionType": "short-text"
+      }
+    },
+    {
+      "pattern": "bullish-pennant",
+      "type": "multiple-choice",
+      "multipleChoice": {
+        "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bullish-pennant.svg",
+        "options": [
+          {
+            "id": "a",
+            "value": "Trader mencari peluang untuk membeli saham atau aset saat harga keluar dari atas pola ini, mengindikasikan bahwa pembeli masih dominan dan ada potensi kenaikan harga lebih lanjut."
+          },
+          {
+            "id": "b",
+            "value": "Pola yang terdiri dari tiga puncak, dengan puncak tengah (kepala) lebih rendah dari dua puncak samping (bahu)."
+          },
+          {
+            "id": "c",
+            "value": "Pola ini terlihat seperti bendera dengan tiang yang menunjukkan tren naik sebelumnya dan koreksi harga yang relatif pendek yang bergerak secara horizontal atau sedikit naik."
+          }
+        ],
+        "trueOptionId": "a",
+        "optionType": "long-text"
       }
     }
   ]
