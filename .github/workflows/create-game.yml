@@ -6,7 +6,7 @@ jobs:
   cron:
     runs-on: ubuntu-latest
     steps:
-      - name: Call Create Game
+      - name: Call Create Game API
         run: |
           curl --request POST \
           --url 'https://stockmaster-be.vercel.app/games'
