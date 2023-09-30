@@ -770,6 +770,142 @@
         "options": [
           {
             "id": "a",
+            "value": "Pola ini dianggap sebagai sinyal bullish, yang berarti bahwa harga saham atau aset kemungkinan akan melanjutkan tren naiknya. Trader mencari peluang untuk membeli saham atau aset saat harga keluar dari atas pola. Ini mengindikasikan bahwa pembeli masih aktif dan ada potensi kenaikan harga lebih lanjut."
+          },
+          {
+            "id": "b",
+            "value": "Pola yang terdiri dari tiga puncak, dengan puncak tengah (kepala) lebih rendah dari dua puncak samping (bahu)."
+          },
+          {
+            "id": "c",
+            "value": "Pola ini terlihat seperti bendera dengan tiang yang menunjukkan tren naik sebelumnya dan koreksi harga yang relatif pendek yang bergerak secara horizontal atau sedikit naik."
+          }
+        ],
+        "trueOptionId": "a",
+        "optionType": "long-text"
+      }
+    },
+    {
+      "pattern": "inverse-cup-and-handle",
+      "type": "multiple-choice",
+      "multipleChoice": {
+        "question": "Fase pertama pola ini menggambarkan kenaikan harga yang tajam, menciptakan bentuk cangkir terbalik, menandakan dominasi pembeli, dan fase kedua  merupakan periode konsolidasi harga setelah kenaikan tersebut.",
+        "options": [
+          {
+            "id": "a",
+            "value": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bullish-pennant.svg"
+          },
+          {
+            "id": "b",
+            "value": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bearish-flag.svg"
+          },
+          {
+            "id": "c",
+            "value": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bullish-flag.svg"
+          },
+          {
+            "id": "d",
+            "value": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/inverse-cup-and-handle.svg"
+          }
+        ],
+        "trueOptionId": "d",
+        "optionType": "image"
+      }
+    },
+    {
+      "pattern": "inverse-cup-and-handle",
+      "type": "multiple-choice",
+      "multipleChoice": {
+        "question": "Pola ini dianggap sebagai sinyal bearish, mengindikasikan potensi pembalikan dari tren naik menjadi tren turun. Setelah terbentuk, trader mencari peluang menjual saham atau aset saat harga keluar dari bawah pola ini.",
+        "options": [
+          {
+            "id": "a",
+            "value": "Inverse Cup and Handle"
+          },
+          {
+            "id": "b",
+            "value": "Cup and Handle"
+          },
+          {
+            "id": "c",
+            "value": "Falling Wedge"
+          },
+          {
+            "id": "d",
+            "value": "Bullish Pennant"
+          }
+        ],
+        "trueOptionId": "a",
+        "optionType": "short-text"
+      }
+    },
+    {
+      "pattern": "inverse-cup-and-handle",
+      "type": "handwrite",
+      "handwrite": {
+        "title": "Inverse Cup and Handle",
+        "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/inverse-cup-and-handle.svg"
+      }
+    },
+    {
+      "pattern": "inverse-cup-and-handle",
+      "type": "multiple-choice",
+      "multipleChoice": {
+        "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/inverse-cup-and-handle.svg",
+        "options": [
+          {
+            "id": "a",
+            "value": "Falling Wedge"
+          },
+          {
+            "id": "b",
+            "value": "Inverse Cup and Handle"
+          },
+          {
+            "id": "c",
+            "value": "Bullish Pennant"
+          },
+          {
+            "id": "d",
+            "value": "Head and Shoulders"
+          }
+        ],
+        "trueOptionId": "b",
+        "optionType": "short-text"
+      }
+    },
+    {
+      "pattern": "inverse-cup-and-handle",
+      "type": "multiple-choice",
+      "multipleChoice": {
+        "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/inverse-cup-and-handle.svg",
+        "options": [
+          {
+            "id": "a",
+            "value": "Mengindikasikan bahwa penjual masih dominan meskipun terjadi koreksi harga. Trader sering mencari peluang sell saat harga keluar dari pola ini ke bawah."
+          },
+          {
+            "id": "b",
+            "value": "Pola ini mengisyaratkan kemungkinan dominasi penjual dan kelanjutan tren turun."
+          },
+          {
+            "id": "c",
+            "value": "Pola ini terlihat seperti bendera dengan tiang yang menunjukkan tren naik sebelumnya dan koreksi harga yang relatif pendek yang bergerak secara horizontal atau sedikit naik."
+          }
+        ],
+        "trueOptionId": "b",
+        "optionType": "long-text"
+      }
+    },
+    {
+      "pattern": "inverse-cup-and-handle",
+      "type": "multiple-choice",
+      "multipleChoice": {
+        "question": "",
+        "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/inverse-cup-and-handle.svg",
+        "options": [
+          {
+            "id": "a",
             "value": ""
           },
           {
@@ -786,30 +922,7 @@
           }
         ],
         "trueOptionId": "",
-        "optionType": "long-text"
-      }
-    },
-    {
-      "pattern": "cup-and-handle",
-      "type": "multiple-choice",
-      "multipleChoice": {
-        "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/cup-and-handle.svg",
-        "options": [
-          {
-            "id": "a",
-            "value": "Pola ini dianggap sebagai sinyal bullish, yang berarti bahwa harga saham atau aset kemungkinan akan melanjutkan tren naiknya. Trader mencari peluang untuk membeli saham atau aset saat harga keluar dari atas pola. Ini mengindikasikan bahwa pembeli masih aktif dan ada potensi kenaikan harga lebih lanjut."
-          },
-          {
-            "id": "b",
-            "value": "Pola yang terdiri dari tiga puncak, dengan puncak tengah (kepala) lebih rendah dari dua puncak samping (bahu)."
-          },
-          {
-            "id": "c",
-            "value": "Pola ini terlihat seperti bendera dengan tiang yang menunjukkan tren naik sebelumnya dan koreksi harga yang relatif pendek yang bergerak secara horizontal atau sedikit naik."
-          }
-        ],
-        "trueOptionId": "a",
-        "optionType": "long-text"
+        "optionType": ""
       }
     }
   ]
