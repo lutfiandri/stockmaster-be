@@ -83,6 +83,48 @@
         "651013ae4aa970361cbc6d5d",
         "651013ae4aa970361cbc6d5e"
       ]
+    },
+    {
+      "title": "Cup and Handle",
+      "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/cup-and-handle.svg",
+      "descriptions": [
+        "Pola ini diberi nama \"Cup and Handle\" karena bentuknya mirip dengan cangkir yang diikuti oleh pegangan. Fase pertama dari pola ini disebut \"Cup\" (cangkir). Selama fase ini, harga saham mengalami penurunan yang signifikan, menciptakan bentuk seperti cangkir atau mangkuk. Ini adalah periode di mana tekanan jual mungkin telah berakhir, dan pembeli mulai mengambil alih. Harga bergerak perlahan ke atas setelah mencapai dasarnya, menunjukkan adanya momentum kenaikan Fase kedua dari pola ini disebut \"Handle\" (pegangan). Ini adalah periode konsolidasi harga setelah pembentukan cangkir. Pegangan biasanya terlihat sebagai penurunan harga yang lebih datar atau pergerakan harga yang bergerak mendatar. Ini adalah waktu ketika trader dan investor mengamati apakah tren naik akan berlanjut. Pola Cup and Handle dianggap sebagai sinyal bullish, yang berarti bahwa harga saham atau aset kemungkinan akan melanjutkan tren naiknya. Trader mencari peluang untuk membeli saham atau aset saat harga keluar dari atas pola Cup and Handle. Ini mengindikasikan bahwa pembeli masih aktif dan ada potensi kenaikan harga lebih lanjut."
+      ],
+      "questionIds": [
+        "65183ac110607d1999954b44",
+        "65183ac110607d1999954b45",
+        "65183ac110607d1999954b46",
+        "65183ac110607d1999954b47",
+        "65183ac110607d1999954b48"
+      ]
+    },
+    {
+      "title": "Inverse Cup and Handle",
+      "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/inverse-cup-and-handle.svg",
+      "descriptions": [
+        "Pola Inverse Cup and Handle adalah pola penting dalam analisis teknikal yang sering digunakan oleh trader dan investor untuk mengidentifikasi potensi pembalikan tren harga saham atau aset. Pola ini terdiri dari dua fase: fase pertama adalah \"Inverse Cup\" yang menggambarkan kenaikan harga yang tajam, menciptakan bentuk cangkir terbalik, menandakan dominasi pembeli, dan fase kedua adalah \"Handle\" yang merupakan periode konsolidasi harga setelah kenaikan tersebut. Pola ini dianggap sebagai sinyal bearish, mengindikasikan potensi pembalikan dari tren naik menjadi tren turun. Setelah terbentuk, trader mencari peluang menjual saham atau aset saat harga keluar dari bawah pola Inverse Cup and Handle, mengisyaratkan kemungkinan dominasi penjual dan kelanjutan tren turun. "
+      ],
+      "questionIds": [
+        "65183ac110607d1999954b49",
+        "65183ac110607d1999954b4a",
+        "65183ac110607d1999954b4b",
+        "65183ac110607d1999954b4c",
+        "65183ac110607d1999954b4d"
+      ]
+    },
+    {
+      "title": "Bullish Pennant",
+      "imageUrl": "https://ik.imagekit.io/lutfiandri/stockmaster/patterns/bullish-pennant.svg",
+      "descriptions": [
+        "Pola Bullish Pennant terbentuk setelah tren naik yang kuat. Pola ini mirip dengan bendera, dengan tiang menunjukkan tren naik sebelumnya dan koreksi harga yang pendek yang bergerak secara horizontal. Secara visual, pola ini terlihat seperti segitiga yang menurun atau lurus dengan garis miring ke bawah. Bullish Pennant adalah sinyal bahwa tren naik mungkin akan berlanjut setelah koreksi harga singkat. Trader mencari peluang untuk membeli saham atau aset saat harga keluar dari atas pola Bullish Pennant, mengindikasikan bahwa pembeli masih dominan dan ada potensi kenaikan harga lebih lanjut."
+      ],
+      "questionIds": [
+        "65183ac110607d1999954b4e",
+        "65183ac110607d1999954b4f",
+        "65183ac110607d1999954b50",
+        "65183ac110607d1999954b51",
+        "65183ac110607d1999954b52"
+      ]
     }
   ]
 }
