@@ -11,6 +11,7 @@ const questionRoute = require('./routes/questionRoute');
 const gameRoute = require('./routes/gameRoute');
 const leaderBoardRoute = require('./routes/leaderBoardRoute');
 const stockRoute = require('./routes/stockRoute');
+const profileRoute = require('./routes/profileRoute');
 
 app.use(cors());
 app.use(express.json());
@@ -42,5 +43,6 @@ app.use('/questions', questionRoute);
 app.use('/games', gameRoute);
 app.use('/leaderboards', leaderBoardRoute);
 app.use('/stocks', stockRoute);
+app.use('/profile', profileRoute);
 
 app.listen(5000, () => console.log('stockmaster-be started...'));
