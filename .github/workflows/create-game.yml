@@ -1,0 +1,12 @@
+name: create new game at 00:00 GMT+7
+on:
+  schedule:
+    - cron: '0 17 * * *'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Create Game
+        run: |
+          curl --request POST \
+          --url 'https://stockmaster-be.vercel.app/games'
