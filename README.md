@@ -28,8 +28,8 @@ StockMaster Merupakan sebuah aplikasi berbasis website yang membantu anda untuk 
 3. Install dengan menggunakan `npm install` atau `yarn`
 4. Isi file .env dengan env yang telah diberikan pada google drive
 5. Jalankan aplikasi
-   - mode production:`npm run build && npm start` atau `yarn build && yarn start`
-   - mode develop: `npm run dev` atau `yarn run dev`
+   - mode production:`npm run start` atau `yarn start`
+   - mode develop: `npm run dev` atau `yarn dev`
 
 ## Profil Tim
 
